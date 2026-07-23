@@ -1,0 +1,9 @@
+[data-theme='prestix'] {
+  --font-body: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  --font-heading: var(--font-body);
+  --interactive-primary: #a77800;
+  --interactive-primary-hover: #8b6300;
+  --interactive-primary-active: #704f00;
+  --border-focus: #a77800;
+  --text-link: #8b6300;
+}

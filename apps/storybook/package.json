@@ -1,0 +1,28 @@
+{
+  "name": "@fredpatch/storybook",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build"
+  },
+  "dependencies": {
+    "@fredpatch/design-tokens": "*",
+    "@fredpatch/design-themes": "*",
+    "@fredpatch/ui": "*",
+    "@fredpatch/patterns": "*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.0",
+    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/addon-interactions": "^8.6.0",
+    "@storybook/blocks": "^8.6.0",
+    "@storybook/react-vite": "^8.6.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "storybook": "^8.6.0",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.1"
+  }
+}

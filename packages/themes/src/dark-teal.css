@@ -1,0 +1,39 @@
+[data-mode='dark'] {
+  color-scheme: dark;
+}
+
+[data-mode='dark'][data-theme='prestix'],
+[data-mode='dark'][data-theme='neutral'] {
+  --surface-page: #040f15;
+  --surface-card: #101d23;
+  --surface-popover: #101d23;
+  --surface-muted: #223037;
+  --surface-subtle: #2c3a41;
+  --surface-emphasis: #cc9c3c;
+
+  --text-primary: #f9fafb;
+  --text-secondary: #e5e7eb;
+  --text-muted: #a3a3a3;
+  --text-subtle: #737373;
+  --text-inverse: #111827;
+
+  --border-default: rgb(255 255 255 / 0.12);
+  --border-subtle: rgb(255 255 255 / 0.08);
+  --border-strong: rgb(255 255 255 / 0.2);
+
+  --status-neutral-bg: #262626;
+  --status-neutral-border: #404040;
+  --status-neutral-text: #d4d4d4;
+  --status-info-bg: #172554;
+  --status-info-border: #1e3a8a;
+  --status-info-text: #60a5fa;
+  --status-success-bg: #052e16;
+  --status-success-border: #14532d;
+  --status-success-text: #4ade80;
+  --status-warning-bg: #451a03;
+  --status-warning-border: #78350f;
+  --status-warning-text: #fbbf24;
+  --status-danger-bg: #450a0a;
+  --status-danger-border: #7f1d1d;
+  --status-danger-text: #f87171;
+}

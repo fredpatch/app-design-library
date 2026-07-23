@@ -1,0 +1,4 @@
+[data-theme='neutral'] {
+  --font-body: ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-body);
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@fredpatch/design-themes",
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@fredpatch/design-tokens": "*"
+  },
+  "exports": {
+    "./themes.css": "./src/index.css",
+    "./neutral.css": "./src/neutral.css",
+    "./prestix.css": "./src/prestix.css",
+    "./anac-institutional.css": "./src/anac-institutional.css",
+    "./dark-teal.css": "./src/dark-teal.css"
+  }
+}

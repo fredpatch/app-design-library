@@ -1,0 +1,16 @@
+{
+  "name": "@fredpatch/design-tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    "./styles.css": "./src/index.css",
+    "./semantic.css": "./src/semantic.css",
+    "./typography.css": "./src/typography.css",
+    "./density.css": "./src/density.css",
+    "./radius.css": "./src/radius.css",
+    "./motion.css": "./src/motion.css"
+  }
+}
