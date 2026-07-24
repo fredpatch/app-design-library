@@ -7,4 +7,5 @@ export interface StatusBadgeProps {
   icon?: React.ReactNode;
   dot?: boolean;
   size?: 'sm' | 'md';
+  className?: string;
 }

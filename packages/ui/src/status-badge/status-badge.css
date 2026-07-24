@@ -1,0 +1,79 @@
+.fp-status-badge {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.fp-status-badge--sm {
+  gap: var(--layout-gap-xs);
+  padding: 0.1875rem 0.5rem;
+  font-size: var(--text-xs);
+}
+
+.fp-status-badge--md {
+  gap: var(--layout-gap-sm);
+  padding: 0.25rem 0.625rem;
+  font-size: var(--text-sm);
+}
+
+.fp-status-badge--neutral {
+  background: var(--status-neutral-bg);
+  border-color: var(--status-neutral-border);
+  color: var(--status-neutral-text);
+}
+
+.fp-status-badge--info {
+  background: var(--status-info-bg);
+  border-color: var(--status-info-border);
+  color: var(--status-info-text);
+}
+
+.fp-status-badge--success {
+  background: var(--status-success-bg);
+  border-color: var(--status-success-border);
+  color: var(--status-success-text);
+}
+
+.fp-status-badge--warning {
+  background: var(--status-warning-bg);
+  border-color: var(--status-warning-border);
+  color: var(--status-warning-text);
+}
+
+.fp-status-badge--danger {
+  background: var(--status-danger-bg);
+  border-color: var(--status-danger-border);
+  color: var(--status-danger-text);
+}
+
+.fp-status-badge__dot {
+  width: 0.5em;
+  height: 0.5em;
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+  background: currentColor;
+}
+
+.fp-status-badge__icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+}
+
+.fp-status-badge__icon > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fp-status-badge__label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
