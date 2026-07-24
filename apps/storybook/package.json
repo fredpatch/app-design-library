@@ -7,10 +7,11 @@
     "build": "storybook build"
   },
   "dependencies": {
-    "@fredpatch/design-tokens": "*",
     "@fredpatch/design-themes": "*",
-    "@fredpatch/ui": "*",
+    "@fredpatch/design-tokens": "*",
     "@fredpatch/patterns": "*",
+    "@fredpatch/ui": "*",
+    "lucide-react": "^1.26.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
