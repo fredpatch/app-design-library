@@ -1,0 +1,62 @@
+.fp-dropdown-menu {
+  z-index: 60;
+  min-width: 12rem;
+  max-width: min(20rem, calc(100vw - 1rem));
+  padding: 0.35rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  color: var(--text-primary);
+  box-shadow: 0 14px 36px rgb(15 23 42 / 0.16);
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+  animation: fp-dropdown-in var(--duration-fast) var(--ease-standard);
+}
+
+.fp-dropdown-menu__item {
+  position: relative;
+  display: flex;
+  min-height: var(--control-height-sm);
+  align-items: center;
+  gap: var(--layout-gap-sm);
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius-md);
+  outline: none;
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  line-height: 1.35;
+  cursor: default;
+  user-select: none;
+}
+
+.fp-dropdown-menu__item[data-inset='true'],
+.fp-dropdown-menu__label[data-inset='true'] { padding-left: 2rem; }
+.fp-dropdown-menu__item[data-highlighted] { background: var(--surface-muted); }
+.fp-dropdown-menu__item[data-disabled] { color: var(--text-disabled); pointer-events: none; }
+.fp-dropdown-menu__item[data-destructive='true'] { color: var(--text-danger, var(--interactive-destructive)); }
+.fp-dropdown-menu__item[data-destructive='true'][data-highlighted] { background: color-mix(in srgb, var(--interactive-destructive) 10%, transparent); }
+.fp-dropdown-menu__item--checkable { padding-left: 2rem; }
+
+.fp-dropdown-menu__indicator {
+  position: absolute;
+  left: 0.6rem;
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.fp-dropdown-menu__indicator svg,
+.fp-dropdown-menu__chevron { width: 0.95rem; height: 0.95rem; }
+.fp-dropdown-menu__chevron { margin-left: auto; }
+.fp-dropdown-menu__label { padding: 0.45rem 0.6rem; color: var(--text-muted); font-size: var(--text-xs); font-weight: var(--font-weight-semibold); }
+.fp-dropdown-menu__separator { height: 1px; margin: 0.3rem -0.1rem; background: var(--border-subtle); }
+.fp-dropdown-menu__shortcut { margin-left: auto; color: var(--text-muted); font-size: var(--text-xs); }
+
+@keyframes fp-dropdown-in {
+  from { opacity: 0; transform: scale(.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fp-dropdown-menu { animation: none; }
+}
