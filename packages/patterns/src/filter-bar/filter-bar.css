@@ -1,0 +1,78 @@
+.fp-filter-bar {
+  display: grid;
+  gap: var(--layout-gap-md);
+  padding: var(--layout-gap-md);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+}
+
+.fp-filter-bar__primary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--layout-gap-md);
+  flex-wrap: wrap;
+}
+
+.fp-filter-bar__search {
+  flex: 1 1 18rem;
+  min-width: min(100%, 16rem);
+}
+
+.fp-filter-bar__controls,
+.fp-filter-bar__actions,
+.fp-filter-bar__filters {
+  display: flex;
+  align-items: center;
+  gap: var(--layout-gap-sm);
+  flex-wrap: wrap;
+}
+
+.fp-filter-bar__filters {
+  padding-top: var(--layout-gap-sm);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.fp-filter-bar__summary {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+.fp-filter-bar input,
+.fp-filter-bar select {
+  min-height: var(--control-height-md);
+  padding-inline: var(--control-padding-x);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--surface-page);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.fp-filter-bar input:focus-visible,
+.fp-filter-bar select:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+@media (max-width: 42rem) {
+  .fp-filter-bar__primary,
+  .fp-filter-bar__controls,
+  .fp-filter-bar__actions,
+  .fp-filter-bar__filters {
+    align-items: stretch;
+  }
+
+  .fp-filter-bar__controls,
+  .fp-filter-bar__actions,
+  .fp-filter-bar__filters {
+    width: 100%;
+  }
+
+  .fp-filter-bar__controls > *,
+  .fp-filter-bar__actions > *,
+  .fp-filter-bar__filters > * {
+    flex: 1 1 100%;
+  }
+}
