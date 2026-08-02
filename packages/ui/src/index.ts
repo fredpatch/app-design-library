@@ -18,3 +18,5 @@ export { Input } from './input/Input';
 export type { InputProps } from './input/Input';
 export { Textarea } from './textarea/Textarea';
 export type { TextareaProps } from './textarea/Textarea';
+export { Pagination } from './pagination/Pagination';
+export type { PaginationProps } from './pagination/Pagination';
