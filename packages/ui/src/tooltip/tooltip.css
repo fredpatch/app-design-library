@@ -4,8 +4,8 @@
   padding: 0.45rem 0.65rem;
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
-  background: var(--surface-inverse, var(--text-primary));
-  color: var(--text-inverse, var(--surface-page));
+  background: var(--surface-emphasis);
+  color: var(--text-inverse);
   box-shadow: 0 8px 24px rgb(15 23 42 / 0.16);
   font-size: var(--text-xs);
   line-height: 1.4;
@@ -15,7 +15,7 @@
 }
 
 .fp-tooltip__arrow {
-  fill: var(--surface-inverse, var(--text-primary));
+  fill: var(--surface-emphasis);
 }
 
 @keyframes fp-tooltip-in {
