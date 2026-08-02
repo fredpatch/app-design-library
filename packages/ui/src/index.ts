@@ -8,4 +8,5 @@ export { StatusBadge } from './status-badge/StatusBadge';
 export type { StatusBadgeProps } from './status-badge/status-badge.types';
 export { FormField } from './form-field/FormField';
 export type { FormFieldProps } from './form-field/form-field.types';
+export { DataTable } from './data-table/DataTable';
 export type { DataTableProps } from './data-table/data-table.types';
