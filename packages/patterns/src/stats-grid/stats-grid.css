@@ -10,12 +10,10 @@
 
 .fp-stat-card {
   container-type: inline-size;
-  display: flex;
   min-width: 0;
-  min-height: 148px;
-  flex-direction: column;
-  gap: var(--layout-gap-md);
-  padding: var(--layout-space-lg);
+  min-height: 156px;
+  overflow: hidden;
+  padding: 0;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   background: var(--surface-card);
@@ -24,8 +22,19 @@
   text-align: left;
 }
 
+.fp-stat-card__inner {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  min-height: 154px;
+  flex-direction: column;
+  gap: var(--layout-gap-md);
+  padding: var(--layout-space-lg);
+}
+
 button.fp-stat-card {
   width: 100%;
+  appearance: none;
   font: inherit;
 }
 
@@ -58,7 +67,6 @@ button.fp-stat-card {
 }
 
 .fp-stat-card__header > .fp-status-badge {
-  flex: 0 0 auto;
   max-width: 100%;
   white-space: nowrap;
 }
@@ -73,9 +81,8 @@ button.fp-stat-card {
 
 .fp-stat-card__icon {
   display: grid;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
   place-items: center;
   border-radius: var(--radius-md);
   background: var(--surface-subtle);
@@ -83,8 +90,8 @@ button.fp-stat-card {
 }
 
 .fp-stat-card__icon > svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
 }
 
 .fp-stat-card__label {
@@ -111,7 +118,7 @@ button.fp-stat-card {
   overflow-wrap: anywhere;
 }
 
-.fp-stat-card--loading {
+.fp-stat-card--loading .fp-stat-card__inner {
   overflow: hidden;
 }
 
@@ -128,6 +135,11 @@ button.fp-stat-card {
 .fp-stat-card__skeleton--description { width: 76%; height: 12px; }
 
 @container (max-width: 250px) {
+  .fp-stat-card__inner {
+    gap: var(--layout-gap-sm);
+    padding: var(--layout-space-md);
+  }
+
   .fp-stat-card__header {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -137,8 +149,8 @@ button.fp-stat-card {
   }
 
   .fp-stat-card__icon {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 
   .fp-stat-card__value {
@@ -160,7 +172,6 @@ button.fp-stat-card {
 
 @media (max-width: 560px) {
   .fp-stats-grid { grid-template-columns: minmax(0, 1fr); }
-  .fp-stat-card { min-height: 128px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
