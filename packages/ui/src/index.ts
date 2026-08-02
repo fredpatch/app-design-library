@@ -20,3 +20,5 @@ export { Textarea } from './textarea/Textarea';
 export type { TextareaProps } from './textarea/Textarea';
 export { Pagination } from './pagination/Pagination';
 export type { PaginationProps } from './pagination/Pagination';
+export { Checkbox } from './checkbox/Checkbox';
+export type { CheckboxProps } from './checkbox/Checkbox';
