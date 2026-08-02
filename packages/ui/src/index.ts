@@ -43,3 +43,9 @@ export {
   DropdownMenuSubContent,
   DropdownMenuRadioGroup,
 } from './dropdown-menu/DropdownMenu';
+export { Alert } from './alert/Alert';
+export type { AlertProps, AlertTone } from './alert/Alert';
+export { Skeleton } from './skeleton/Skeleton';
+export type { SkeletonProps } from './skeleton/Skeleton';
+export { Separator } from './separator/Separator';
+export type { SeparatorProps } from './separator/Separator';
