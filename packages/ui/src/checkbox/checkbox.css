@@ -42,7 +42,7 @@
 }
 
 .fp-checkbox[aria-invalid='true'] {
-  border-color: var(--border-danger);
+  border-color: var(--status-danger-border);
 }
 
 .fp-checkbox:focus-visible {
