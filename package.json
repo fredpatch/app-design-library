@@ -7,6 +7,7 @@
     "packages/*"
   ],
   "scripts": {
+    "audit:components": "node scripts/audit-components.mjs",
     "build": "npm run build --workspaces --if-present",
     "dev": "npm run dev --workspace=apps/storybook",
     "lint": "npm run lint --workspaces --if-present",
