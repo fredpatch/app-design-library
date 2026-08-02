@@ -1,0 +1,55 @@
+.fp-entity-list-page {
+  display: grid;
+  width: min(100%, 1440px);
+  margin-inline: auto;
+  gap: var(--layout-gap-lg, 1.5rem);
+  color: var(--text-primary);
+}
+
+.fp-entity-list-page__header,
+.fp-entity-list-page__notices,
+.fp-entity-list-page__stats,
+.fp-entity-list-page__filters,
+.fp-entity-list-page__results,
+.fp-entity-list-page__table {
+  min-width: 0;
+}
+
+.fp-entity-list-page__notices {
+  display: grid;
+  gap: var(--layout-gap-sm, 0.5rem);
+}
+
+.fp-entity-list-page__results {
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+}
+
+.fp-entity-list-page__table {
+  overflow-x: auto;
+}
+
+.fp-entity-list-page__pagination {
+  display: flex;
+  min-height: var(--control-height-lg, 3.25rem);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--layout-gap-md, 1rem);
+  padding: var(--control-padding-y, 0.625rem) var(--control-padding-x, 1rem);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--surface-card);
+}
+
+@media (max-width: 720px) {
+  .fp-entity-list-page {
+    gap: var(--layout-gap-md, 1rem);
+  }
+
+  .fp-entity-list-page__pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
