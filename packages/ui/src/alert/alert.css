@@ -1,0 +1,81 @@
+.fp-alert {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--layout-gap-md);
+  padding: var(--layout-gap-md);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  color: var(--text-primary);
+}
+
+.fp-alert__icon,
+.fp-alert__dismiss {
+  display: inline-grid;
+  place-items: center;
+}
+
+.fp-alert__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.125rem;
+}
+
+.fp-alert__icon svg,
+.fp-alert__dismiss svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fp-alert__content {
+  display: grid;
+  min-width: 0;
+  gap: var(--layout-gap-xs);
+}
+
+.fp-alert__title {
+  font-weight: var(--font-weight-semibold);
+}
+
+.fp-alert__description {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.fp-alert__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-gap-sm);
+  padding-top: var(--layout-gap-xs);
+}
+
+.fp-alert__dismiss {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.4rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.fp-alert__dismiss:hover { background: color-mix(in srgb, currentColor 9%, transparent); }
+.fp-alert__dismiss:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+
+.fp-alert--info { border-color: color-mix(in srgb, var(--status-info) 35%, var(--border-default)); background: color-mix(in srgb, var(--status-info) 8%, var(--surface-card)); }
+.fp-alert--success { border-color: color-mix(in srgb, var(--status-success) 35%, var(--border-default)); background: color-mix(in srgb, var(--status-success) 8%, var(--surface-card)); }
+.fp-alert--warning { border-color: color-mix(in srgb, var(--status-warning) 40%, var(--border-default)); background: color-mix(in srgb, var(--status-warning) 10%, var(--surface-card)); }
+.fp-alert--danger { border-color: color-mix(in srgb, var(--status-danger) 40%, var(--border-default)); background: color-mix(in srgb, var(--status-danger) 8%, var(--surface-card)); }
+
+.fp-alert--info .fp-alert__icon { color: var(--status-info); }
+.fp-alert--success .fp-alert__icon { color: var(--status-success); }
+.fp-alert--warning .fp-alert__icon { color: var(--status-warning); }
+.fp-alert--danger .fp-alert__icon { color: var(--status-danger); }
+
+@media (max-width: 36rem) {
+  .fp-alert { gap: var(--layout-gap-sm); }
+  .fp-alert__actions > * { flex: 1 1 auto; }
+}
