@@ -28,8 +28,8 @@
   width: 100%;
   min-height: 154px;
   flex-direction: column;
-  gap: var(--layout-gap-md);
-  padding: var(--layout-space-lg);
+  gap: var(--layout-gap-md, 1rem);
+  padding: var(--layout-gap-lg, 1.5rem);
 }
 
 button.fp-stat-card {
@@ -63,7 +63,7 @@ button.fp-stat-card {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
-  gap: var(--layout-gap-sm);
+  gap: var(--layout-gap-sm, 0.5rem);
 }
 
 .fp-stat-card__header > .fp-status-badge {
@@ -76,7 +76,7 @@ button.fp-stat-card {
   min-width: 0;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: start;
-  gap: var(--layout-gap-sm);
+  gap: var(--layout-gap-sm, 0.5rem);
 }
 
 .fp-stat-card__icon {
@@ -136,8 +136,8 @@ button.fp-stat-card {
 
 @container (max-width: 250px) {
   .fp-stat-card__inner {
-    gap: var(--layout-gap-sm);
-    padding: var(--layout-space-md);
+    gap: var(--layout-gap-sm, 0.5rem);
+    padding: var(--layout-gap-md, 1rem);
   }
 
   .fp-stat-card__header {
