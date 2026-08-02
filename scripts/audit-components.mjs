@@ -6,6 +6,7 @@ const SOURCE_ROOTS = ['apps', 'packages'];
 const TEXT_EXTENSIONS = new Set(['.css', '.ts', '.tsx']);
 const TOKEN_DEFINITION = /(--[a-z0-9-]+)\s*:/gi;
 const TOKEN_USAGE = /var\(\s*(--[a-z0-9-]+)/gi;
+const RUNTIME_TOKEN_PREFIXES = ['--radix-'];
 
 const broadSelectorPatterns = [
   /\.[a-z0-9_-]+\s+(input|select|textarea|button)\b/gi,
@@ -28,6 +29,10 @@ async function walk(directory) {
 
 function lineNumber(content, index) {
   return content.slice(0, index).split('\n').length;
+}
+
+function isRuntimeToken(token) {
+  return RUNTIME_TOKEN_PREFIXES.some((prefix) => token.startsWith(prefix));
 }
 
 const existingRoots = [];
@@ -59,7 +64,6 @@ for (const file of files) {
     for (const pattern of broadSelectorPatterns) {
       for (const match of content.matchAll(pattern)) {
         const selector = match[0].replace(/\s+/g, ' ').trim();
-        // Direct-child selectors and intentionally documented legacy rules are acceptable.
         const lineStart = content.lastIndexOf('\n', match.index ?? 0) + 1;
         const preceding = content.slice(Math.max(0, lineStart - 180), lineStart);
         if (!selector.includes('>') && !preceding.includes('audit-allow-broad-selector')) {
@@ -70,7 +74,7 @@ for (const file of files) {
   }
 }
 
-const undefinedUsages = usages.filter(({ token }) => !definitions.has(token));
+const undefinedUsages = usages.filter(({ token }) => !definitions.has(token) && !isRuntimeToken(token));
 const groupedUndefined = new Map();
 for (const usage of undefinedUsages) {
   const list = groupedUndefined.get(usage.token) ?? [];
