@@ -18,10 +18,16 @@ async function walk(directory) {
   const files = [];
 
   for (const entry of entries) {
-    if (entry.name === 'node_modules' || entry.name === 'dist' || entry.name === 'storybook-static') continue;
+    if (
+      entry.name === 'node_modules' ||
+      entry.name === 'dist' ||
+      entry.name === 'storybook-static'
+    )
+      continue;
     const absolute = path.join(directory, entry.name);
-    if (entry.isDirectory()) files.push(...await walk(absolute));
-    else if (TEXT_EXTENSIONS.has(path.extname(entry.name))) files.push(absolute);
+    if (entry.isDirectory()) files.push(...(await walk(absolute)));
+    else if (TEXT_EXTENSIONS.has(path.extname(entry.name)))
+      files.push(absolute);
   }
 
   return files;
@@ -55,9 +61,14 @@ for (const file of files) {
   const content = await fs.readFile(file, 'utf8');
   const relative = path.relative(ROOT, file).replaceAll(path.sep, '/');
 
-  for (const match of content.matchAll(TOKEN_DEFINITION)) definitions.add(match[1]);
+  for (const match of content.matchAll(TOKEN_DEFINITION))
+    definitions.add(match[1]);
   for (const match of content.matchAll(TOKEN_USAGE)) {
-    usages.push({ token: match[1], file: relative, line: lineNumber(content, match.index ?? 0) });
+    usages.push({
+      token: match[1],
+      file: relative,
+      line: lineNumber(content, match.index ?? 0),
+    });
   }
 
   if (path.extname(file) === '.css') {
@@ -65,16 +76,28 @@ for (const file of files) {
       for (const match of content.matchAll(pattern)) {
         const selector = match[0].replace(/\s+/g, ' ').trim();
         const lineStart = content.lastIndexOf('\n', match.index ?? 0) + 1;
-        const preceding = content.slice(Math.max(0, lineStart - 180), lineStart);
-        if (!selector.includes('>') && !preceding.includes('audit-allow-broad-selector')) {
-          selectorWarnings.push({ selector, file: relative, line: lineNumber(content, match.index ?? 0) });
+        const preceding = content.slice(
+          Math.max(0, lineStart - 180),
+          lineStart,
+        );
+        if (
+          !selector.includes('>') &&
+          !preceding.includes('audit-allow-broad-selector')
+        ) {
+          selectorWarnings.push({
+            selector,
+            file: relative,
+            line: lineNumber(content, match.index ?? 0),
+          });
         }
       }
     }
   }
 }
 
-const undefinedUsages = usages.filter(({ token }) => !definitions.has(token) && !isRuntimeToken(token));
+const undefinedUsages = usages.filter(
+  ({ token }) => !definitions.has(token) && !isRuntimeToken(token),
+);
 const groupedUndefined = new Map();
 for (const usage of undefinedUsages) {
   const list = groupedUndefined.get(usage.token) ?? [];
@@ -86,8 +109,10 @@ if (groupedUndefined.size > 0) {
   console.error('\nUndefined CSS custom properties:\n');
   for (const [token, locations] of [...groupedUndefined.entries()].sort()) {
     console.error(`  ${token}`);
-    for (const location of locations.slice(0, 8)) console.error(`    ${location.file}:${location.line}`);
-    if (locations.length > 8) console.error(`    …and ${locations.length - 8} more`);
+    for (const location of locations.slice(0, 8))
+      console.error(`    ${location.file}:${location.line}`);
+    if (locations.length > 8)
+      console.error(`    …and ${locations.length - 8} more`);
   }
 }
 
@@ -96,9 +121,13 @@ if (selectorWarnings.length > 0) {
   for (const warning of selectorWarnings) {
     console.warn(`  ${warning.file}:${warning.line}  ${warning.selector}`);
   }
-  console.warn('\nUse a component class, a direct-child selector, or add an audit-allow-broad-selector comment when intentional.');
+  console.warn(
+    '\nUse a component class, a direct-child selector, or add an audit-allow-broad-selector comment when intentional.',
+  );
 }
 
-console.log(`\nAudited ${files.length} source files, ${definitions.size} token definitions, and ${usages.length} token usages.`);
+console.log(
+  `\nAudited ${files.length} source files, ${definitions.size} token definitions, and ${usages.length} token usages.`,
+);
 
 if (groupedUndefined.size > 0) process.exitCode = 1;

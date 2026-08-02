@@ -11,9 +11,5 @@ The library separates:
 Theme, color mode, and density are independent:
 
 ```html
-<html
-  data-theme="prestix"
-  data-mode="dark"
-  data-density="dense"
->
+<html data-theme="prestix" data-mode="dark" data-density="dense"></html>
 ```

@@ -2,20 +2,39 @@
   display: block;
   min-width: 0;
   min-height: 0.75rem;
-  background: linear-gradient(90deg, var(--surface-subtle), var(--surface-muted), var(--surface-subtle));
+  background: linear-gradient(
+    90deg,
+    var(--surface-subtle),
+    var(--surface-muted),
+    var(--surface-subtle)
+  );
   background-size: 200% 100%;
 }
 
-.fp-skeleton--sm { border-radius: var(--radius-sm); }
-.fp-skeleton--md { border-radius: var(--radius-md); }
-.fp-skeleton--lg { border-radius: var(--radius-lg); }
-.fp-skeleton--full { border-radius: var(--radius-full); }
-.fp-skeleton--animated { animation: fp-skeleton-shimmer 1.4s ease-in-out infinite; }
+.fp-skeleton--sm {
+  border-radius: var(--radius-sm);
+}
+.fp-skeleton--md {
+  border-radius: var(--radius-md);
+}
+.fp-skeleton--lg {
+  border-radius: var(--radius-lg);
+}
+.fp-skeleton--full {
+  border-radius: var(--radius-full);
+}
+.fp-skeleton--animated {
+  animation: fp-skeleton-shimmer 1.4s ease-in-out infinite;
+}
 
 @keyframes fp-skeleton-shimmer {
-  to { background-position: -200% 0; }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fp-skeleton--animated { animation: none; }
+  .fp-skeleton--animated {
+    animation: none;
+  }
 }

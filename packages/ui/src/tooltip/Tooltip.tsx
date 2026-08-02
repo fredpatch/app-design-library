@@ -24,7 +24,10 @@ export function Tooltip({
   if (disabled) return <>{children}</>;
 
   return (
-    <TooltipPrimitive.Provider delayDuration={delayDuration} skipDelayDuration={150}>
+    <TooltipPrimitive.Provider
+      delayDuration={delayDuration}
+      skipDelayDuration={150}
+    >
       <TooltipPrimitive.Root>
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>

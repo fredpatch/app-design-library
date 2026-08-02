@@ -4,9 +4,15 @@
   gap: var(--layout-gap-md);
 }
 
-.fp-stats-grid[data-columns='2'] { --fp-stats-columns: 2; }
-.fp-stats-grid[data-columns='3'] { --fp-stats-columns: 3; }
-.fp-stats-grid[data-columns='4'] { --fp-stats-columns: 4; }
+.fp-stats-grid[data-columns='2'] {
+  --fp-stats-columns: 2;
+}
+.fp-stats-grid[data-columns='3'] {
+  --fp-stats-columns: 3;
+}
+.fp-stats-grid[data-columns='4'] {
+  --fp-stats-columns: 4;
+}
 
 .fp-stat-card {
   container-type: inline-size;
@@ -125,14 +131,29 @@ button.fp-stat-card {
 .fp-stat-card__skeleton {
   display: block;
   border-radius: var(--radius-sm);
-  background: linear-gradient(90deg, var(--surface-subtle), var(--surface-muted), var(--surface-subtle));
+  background: linear-gradient(
+    90deg,
+    var(--surface-subtle),
+    var(--surface-muted),
+    var(--surface-subtle)
+  );
   background-size: 200% 100%;
   animation: fp-stat-shimmer 1.4s ease-in-out infinite;
 }
 
-.fp-stat-card__skeleton--label { width: 56%; height: 14px; }
-.fp-stat-card__skeleton--value { width: 34%; height: 34px; margin-top: auto; }
-.fp-stat-card__skeleton--description { width: 76%; height: 12px; }
+.fp-stat-card__skeleton--label {
+  width: 56%;
+  height: 14px;
+}
+.fp-stat-card__skeleton--value {
+  width: 34%;
+  height: 34px;
+  margin-top: auto;
+}
+.fp-stat-card__skeleton--description {
+  width: 76%;
+  height: 12px;
+}
 
 @container (max-width: 250px) {
   .fp-stat-card__inner {
@@ -159,22 +180,33 @@ button.fp-stat-card {
 }
 
 @keyframes fp-stat-shimmer {
-  to { background-position: -200% 0; }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 @media (max-width: 1100px) {
-  .fp-stats-grid[data-columns='4'] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fp-stats-grid[data-columns='4'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 760px) {
-  .fp-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fp-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 560px) {
-  .fp-stats-grid { grid-template-columns: minmax(0, 1fr); }
+  .fp-stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .fp-stat-card--interactive,
-  .fp-stat-card__skeleton { animation: none; transition: none; }
+  .fp-stat-card__skeleton {
+    animation: none;
+    transition: none;
+  }
 }

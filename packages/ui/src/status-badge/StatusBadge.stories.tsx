@@ -44,8 +44,12 @@ export const Tones: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-      <StatusBadge size="sm" tone="info">Petit</StatusBadge>
-      <StatusBadge size="md" tone="info">Moyen</StatusBadge>
+      <StatusBadge size="sm" tone="info">
+        Petit
+      </StatusBadge>
+      <StatusBadge size="md" tone="info">
+        Moyen
+      </StatusBadge>
     </div>
   ),
 };
@@ -61,9 +65,15 @@ export const WithDot: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-      <StatusBadge tone="success" icon={<CheckCircle2 />}>Validé</StatusBadge>
-      <StatusBadge tone="warning" icon={<Clock3 />}>En attente</StatusBadge>
-      <StatusBadge tone="danger" icon={<ShieldAlert />}>Action requise</StatusBadge>
+      <StatusBadge tone="success" icon={<CheckCircle2 />}>
+        Validé
+      </StatusBadge>
+      <StatusBadge tone="warning" icon={<Clock3 />}>
+        En attente
+      </StatusBadge>
+      <StatusBadge tone="danger" icon={<ShieldAlert />}>
+        Action requise
+      </StatusBadge>
     </div>
   ),
 };
@@ -79,9 +89,15 @@ export const DensityComparison: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: 16 }}>
       {(['comfortable', 'compact', 'dense'] as const).map((density) => (
-        <div key={density} data-density={density} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+        <div
+          key={density}
+          data-density={density}
+          style={{ display: 'flex', gap: 12, alignItems: 'center' }}
+        >
           <strong style={{ width: 110 }}>{density}</strong>
-          <StatusBadge tone="success" dot>Validé</StatusBadge>
+          <StatusBadge tone="success" dot>
+            Validé
+          </StatusBadge>
           <StatusBadge tone="warning">En attente</StatusBadge>
         </div>
       ))}

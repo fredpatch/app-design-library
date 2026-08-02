@@ -4,17 +4,11 @@
 
 ```ts
 export type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'outline'
-  | 'ghost'
-  | 'destructive'
-  | 'link';
+  'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'link';
 
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;
@@ -35,12 +29,7 @@ Acceptance points:
 ## StatusBadge
 
 ```ts
-export type StatusTone =
-  | 'neutral'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger';
+export type StatusTone = 'neutral' | 'info' | 'success' | 'warning' | 'danger';
 
 export interface StatusBadgeProps {
   tone?: StatusTone;

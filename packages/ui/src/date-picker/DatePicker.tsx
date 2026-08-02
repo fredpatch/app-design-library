@@ -14,25 +14,53 @@ export interface DatePickerProps {
   disabled?: boolean;
 }
 
-export function DatePicker({ value, onChange, placeholder = 'Choisir une date', ariaLabel, disabled }: DatePickerProps) {
+export function DatePicker({
+  value,
+  onChange,
+  placeholder = 'Choisir une date',
+  ariaLabel,
+  disabled,
+}: DatePickerProps) {
   const [open, setOpen] = React.useState(false);
   return (
     <Popover.Root open={open} onOpenChange={setOpen}>
       <Popover.Trigger asChild>
-        <button type="button" className="fp-date-picker__trigger" aria-label={ariaLabel} disabled={disabled} data-empty={!value || undefined}>
+        <button
+          type="button"
+          className="fp-date-picker__trigger"
+          aria-label={ariaLabel}
+          disabled={disabled}
+          data-empty={!value || undefined}
+        >
           <CalendarDays size={16} aria-hidden="true" />
-          <span>{value ? format(value, 'dd MMM yyyy', { locale: fr }) : placeholder}</span>
+          <span>
+            {value ? format(value, 'dd MMM yyyy', { locale: fr }) : placeholder}
+          </span>
         </button>
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Content className="fp-date-picker__content" align="start" sideOffset={6}>
+        <Popover.Content
+          className="fp-date-picker__content"
+          align="start"
+          sideOffset={6}
+        >
           <DayPicker
             mode="single"
             selected={value}
-            onSelect={(date) => { onChange?.(date); if (date) setOpen(false); }}
+            onSelect={(date) => {
+              onChange?.(date);
+              if (date) setOpen(false);
+            }}
             locale={fr}
             showOutsideDays
-            components={{ Chevron: ({ orientation }) => orientation === 'left' ? <ChevronLeft size={16} /> : <ChevronRight size={16} /> }}
+            components={{
+              Chevron: ({ orientation }) =>
+                orientation === 'left' ? (
+                  <ChevronLeft size={16} />
+                ) : (
+                  <ChevronRight size={16} />
+                ),
+            }}
           />
         </Popover.Content>
       </Popover.Portal>

@@ -8,7 +8,12 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, resize = 'vertical', ...props }, ref) => (
-    <textarea ref={ref} className={cn('fp-textarea', className)} data-resize={resize} {...props} />
+    <textarea
+      ref={ref}
+      className={cn('fp-textarea', className)}
+      data-resize={resize}
+      {...props}
+    />
   ),
 );
 

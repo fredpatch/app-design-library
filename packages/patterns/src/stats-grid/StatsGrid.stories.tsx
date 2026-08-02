@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CalendarClock, CheckCircle2, ClipboardList, FileWarning, Users } from 'lucide-react';
+import {
+  CalendarClock,
+  CheckCircle2,
+  ClipboardList,
+  FileWarning,
+  Users,
+} from 'lucide-react';
 import { StatsGrid } from './StatsGrid';
 import type { StatItem } from './stats-grid.types';
 
@@ -57,17 +63,23 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 export const Loading: Story = { args: { loading: true } };
-export const ThreeColumns: Story = { args: { columns: 3, items: items.slice(0, 3) } };
-export const TwoColumns: Story = { args: { columns: 2, items: items.slice(0, 2) } };
+export const ThreeColumns: Story = {
+  args: { columns: 3, items: items.slice(0, 3) },
+};
+export const TwoColumns: Story = {
+  args: { columns: 2, items: items.slice(0, 2) },
+};
 
 export const LongFrenchContent: Story = {
   args: {
     items: [
       {
         id: 'postulants',
-        label: 'Demandes de création de compte postulant en attente de vérification administrative',
+        label:
+          'Demandes de création de compte postulant en attente de vérification administrative',
         value: '12',
-        description: 'Inclut les demandes déposées en ligne et celles enregistrées à l’accueil.',
+        description:
+          'Inclut les demandes déposées en ligne et celles enregistrées à l’accueil.',
         trend: 'Prioritaire',
         tone: 'warning',
         icon: <Users />,
@@ -81,7 +93,11 @@ export const ThemeComparison: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: 24 }}>
       {(['neutral', 'prestix', 'anac-institutional'] as const).map((theme) => (
-        <section key={theme} data-theme={theme} style={{ padding: 20, background: 'var(--surface-page)' }}>
+        <section
+          key={theme}
+          data-theme={theme}
+          style={{ padding: 20, background: 'var(--surface-page)' }}
+        >
           <StatsGrid items={items} columns={4} />
         </section>
       ))}

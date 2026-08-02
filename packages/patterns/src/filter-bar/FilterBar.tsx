@@ -40,7 +40,9 @@ export function FilterBar({
             </Button>
           ) : null}
 
-          {actions ? <div className="fp-filter-bar__actions">{actions}</div> : null}
+          {actions ? (
+            <div className="fp-filter-bar__actions">{actions}</div>
+          ) : null}
         </div>
       </div>
 

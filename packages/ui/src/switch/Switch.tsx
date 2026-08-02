@@ -3,21 +3,33 @@ import * as SwitchPrimitive from '@radix-ui/react-switch';
 import { cn } from '../utils/cn';
 import './switch.css';
 
-export interface SwitchProps extends Omit<React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root>, 'asChild'> {
+export interface SwitchProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root>,
+  'asChild'
+> {
   label?: React.ReactNode;
   description?: React.ReactNode;
   invalid?: boolean;
   className?: string;
 }
 
-export const Switch = React.forwardRef<React.ElementRef<typeof SwitchPrimitive.Root>, SwitchProps>(
-  ({ id, label, description, invalid = false, disabled, className, ...props }, ref) => {
+export const Switch = React.forwardRef<
+  React.ElementRef<typeof SwitchPrimitive.Root>,
+  SwitchProps
+>(
+  (
+    { id, label, description, invalid = false, disabled, className, ...props },
+    ref,
+  ) => {
     const generatedId = React.useId();
     const controlId = id ?? generatedId;
     const descriptionId = description ? `${controlId}-description` : undefined;
 
     return (
-      <label className={cn('fp-switch-field', className)} data-disabled={disabled ? 'true' : undefined}>
+      <label
+        className={cn('fp-switch-field', className)}
+        data-disabled={disabled ? 'true' : undefined}
+      >
         <SwitchPrimitive.Root
           {...props}
           ref={ref}
@@ -32,7 +44,9 @@ export const Switch = React.forwardRef<React.ElementRef<typeof SwitchPrimitive.R
 
         {label || description ? (
           <span className="fp-switch-field__content">
-            {label ? <span className="fp-switch-field__label">{label}</span> : null}
+            {label ? (
+              <span className="fp-switch-field__label">{label}</span>
+            ) : null}
             {description ? (
               <span id={descriptionId} className="fp-switch-field__description">
                 {description}

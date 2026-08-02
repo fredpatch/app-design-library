@@ -56,10 +56,23 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-loading={loading ? 'true' : undefined}
         {...props}
       >
-        <span className="fp-button__content" data-hidden={loading ? 'true' : undefined}>
-          {leadingIcon ? <span className="fp-button__icon" aria-hidden="true">{leadingIcon}</span> : null}
-          {children ? <span className="fp-button__label">{children}</span> : null}
-          {trailingIcon ? <span className="fp-button__icon" aria-hidden="true">{trailingIcon}</span> : null}
+        <span
+          className="fp-button__content"
+          data-hidden={loading ? 'true' : undefined}
+        >
+          {leadingIcon ? (
+            <span className="fp-button__icon" aria-hidden="true">
+              {leadingIcon}
+            </span>
+          ) : null}
+          {children ? (
+            <span className="fp-button__label">{children}</span>
+          ) : null}
+          {trailingIcon ? (
+            <span className="fp-button__icon" aria-hidden="true">
+              {trailingIcon}
+            </span>
+          ) : null}
         </span>
         {loading ? (
           <span className="fp-button__loader" aria-hidden="true">
