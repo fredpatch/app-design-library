@@ -15,9 +15,11 @@ export function StatsGrid({
       <div className="fp-stats-grid" data-columns={columns} aria-label={loadingLabel} aria-busy="true">
         {Array.from({ length: loadingRowCount ?? columns }).map((_, index) => (
           <article className="fp-stat-card fp-stat-card--loading" key={index} aria-hidden="true">
-            <span className="fp-stat-card__skeleton fp-stat-card__skeleton--label" />
-            <span className="fp-stat-card__skeleton fp-stat-card__skeleton--value" />
-            <span className="fp-stat-card__skeleton fp-stat-card__skeleton--description" />
+            <div className="fp-stat-card__inner">
+              <span className="fp-stat-card__skeleton fp-stat-card__skeleton--label" />
+              <span className="fp-stat-card__skeleton fp-stat-card__skeleton--value" />
+              <span className="fp-stat-card__skeleton fp-stat-card__skeleton--description" />
+            </div>
           </article>
         ))}
       </div>
@@ -28,7 +30,7 @@ export function StatsGrid({
     <div className="fp-stats-grid" data-columns={columns}>
       {items.map((item) => {
         const content = (
-          <>
+          <div className="fp-stat-card__inner">
             <div className="fp-stat-card__header">
               <div className="fp-stat-card__label-group">
                 {item.icon ? <span className="fp-stat-card__icon" aria-hidden="true">{item.icon}</span> : null}
@@ -38,7 +40,7 @@ export function StatsGrid({
             </div>
             <div className="fp-stat-card__value">{item.value}</div>
             {item.description ? <div className="fp-stat-card__description">{item.description}</div> : null}
-          </>
+          </div>
         );
 
         return item.onClick ? (
