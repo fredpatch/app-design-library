@@ -5,19 +5,23 @@ import './select.css';
 
 export interface SelectOption { label: string; value: string; disabled?: boolean }
 export interface SelectProps {
+  id?: string;
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   options: SelectOption[];
   placeholder?: string;
-  ariaLabel: string;
+  ariaLabel?: string;
+  'aria-describedby'?: string;
+  'aria-invalid'?: boolean;
+  required?: boolean;
   disabled?: boolean;
 }
 
-export function Select({ value, defaultValue, onValueChange, options, placeholder = 'Sélectionner', ariaLabel, disabled }: SelectProps) {
+export function Select({ id, value, defaultValue, onValueChange, options, placeholder = 'Sélectionner', ariaLabel, disabled, required, ...ariaProps }: SelectProps) {
   return (
-    <SelectPrimitive.Root value={value} defaultValue={defaultValue} onValueChange={onValueChange} disabled={disabled}>
-      <SelectPrimitive.Trigger className="fp-select__trigger" aria-label={ariaLabel}>
+    <SelectPrimitive.Root value={value} defaultValue={defaultValue} onValueChange={onValueChange} disabled={disabled} required={required}>
+      <SelectPrimitive.Trigger id={id} className="fp-select__trigger" aria-label={ariaLabel} {...ariaProps}>
         <SelectPrimitive.Value placeholder={placeholder} />
         <SelectPrimitive.Icon className="fp-select__chevron"><ChevronDown size={16} /></SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
