@@ -9,10 +9,14 @@ export interface StatItem {
   trend?: React.ReactNode;
   icon?: React.ReactNode;
   tone?: StatusTone;
+  onClick?: () => void;
+  ariaLabel?: string;
 }
 
 export interface StatsGridProps {
   items: StatItem[];
   loading?: boolean;
+  loadingRowCount?: number;
+  loadingLabel?: string;
   columns?: 2 | 3 | 4;
 }

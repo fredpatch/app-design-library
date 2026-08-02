@@ -1,0 +1,180 @@
+.fp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--fp-stats-columns, 4), minmax(0, 1fr));
+  gap: var(--layout-gap-md);
+}
+
+.fp-stats-grid[data-columns='2'] { --fp-stats-columns: 2; }
+.fp-stats-grid[data-columns='3'] { --fp-stats-columns: 3; }
+.fp-stats-grid[data-columns='4'] { --fp-stats-columns: 4; }
+
+.fp-stat-card {
+  container-type: inline-size;
+  min-width: 0;
+  min-height: 156px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+  text-align: left;
+}
+
+.fp-stat-card__inner {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  min-height: 154px;
+  flex-direction: column;
+  gap: var(--layout-gap-md, 1rem);
+  padding: var(--layout-gap-lg, 1.5rem);
+}
+
+button.fp-stat-card {
+  width: 100%;
+  appearance: none;
+  font: inherit;
+}
+
+.fp-stat-card--interactive {
+  cursor: pointer;
+  transition:
+    transform var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.fp-stat-card--interactive:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-default);
+  background: var(--surface-muted);
+  box-shadow: 0 8px 20px rgb(15 23 42 / 0.08);
+}
+
+.fp-stat-card--interactive:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+.fp-stat-card__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--layout-gap-sm, 0.5rem);
+}
+
+.fp-stat-card__header > .fp-status-badge {
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.fp-stat-card__label-group {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--layout-gap-sm, 0.5rem);
+}
+
+.fp-stat-card__icon {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+}
+
+.fp-stat-card__icon > svg {
+  width: 17px;
+  height: 17px;
+}
+
+.fp-stat-card__label {
+  min-width: 0;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.fp-stat-card__value {
+  margin-top: auto;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.fp-stat-card__description {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.fp-stat-card--loading .fp-stat-card__inner {
+  overflow: hidden;
+}
+
+.fp-stat-card__skeleton {
+  display: block;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--surface-subtle), var(--surface-muted), var(--surface-subtle));
+  background-size: 200% 100%;
+  animation: fp-stat-shimmer 1.4s ease-in-out infinite;
+}
+
+.fp-stat-card__skeleton--label { width: 56%; height: 14px; }
+.fp-stat-card__skeleton--value { width: 34%; height: 34px; margin-top: auto; }
+.fp-stat-card__skeleton--description { width: 76%; height: 12px; }
+
+@container (max-width: 250px) {
+  .fp-stat-card__inner {
+    gap: var(--layout-gap-sm, 0.5rem);
+    padding: var(--layout-gap-md, 1rem);
+  }
+
+  .fp-stat-card__header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fp-stat-card__header > .fp-status-badge {
+    justify-self: start;
+  }
+
+  .fp-stat-card__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .fp-stat-card__value {
+    font-size: 1.75rem;
+  }
+}
+
+@keyframes fp-stat-shimmer {
+  to { background-position: -200% 0; }
+}
+
+@media (max-width: 1100px) {
+  .fp-stats-grid[data-columns='4'] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .fp-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .fp-stats-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fp-stat-card--interactive,
+  .fp-stat-card__skeleton { animation: none; transition: none; }
+}
