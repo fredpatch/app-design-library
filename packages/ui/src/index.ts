@@ -10,3 +10,7 @@ export { FormField } from './form-field/FormField';
 export type { FormFieldProps } from './form-field/form-field.types';
 export { DataTable } from './data-table/DataTable';
 export type { DataTableProps } from './data-table/data-table.types';
+export { Select } from './select/Select';
+export type { SelectOption, SelectProps } from './select/Select';
+export { DatePicker } from './date-picker/DatePicker';
+export type { DatePickerProps } from './date-picker/DatePicker';
