@@ -28,7 +28,10 @@ export function DataTable<TData>({
         <table className="fp-data-table__table">
           <thead className="fp-data-table__head">
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id} className="fp-data-table__row fp-data-table__row--header">
+              <tr
+                key={headerGroup.id}
+                className="fp-data-table__row fp-data-table__row--header"
+              >
                 {headerGroup.headers.map((header) => {
                   const canSort = header.column.getCanSort();
                   const sorted = header.column.getIsSorted();
@@ -54,13 +57,28 @@ export function DataTable<TData>({
                           className="fp-data-table__sort"
                           onClick={header.column.getToggleSortingHandler()}
                         >
-                          <span>{flexRender(header.column.columnDef.header, header.getContext())}</span>
-                          <span className="fp-data-table__sort-indicator" aria-hidden="true">
-                            {sorted === 'asc' ? '↑' : sorted === 'desc' ? '↓' : '↕'}
+                          <span>
+                            {flexRender(
+                              header.column.columnDef.header,
+                              header.getContext(),
+                            )}
+                          </span>
+                          <span
+                            className="fp-data-table__sort-indicator"
+                            aria-hidden="true"
+                          >
+                            {sorted === 'asc'
+                              ? '↑'
+                              : sorted === 'desc'
+                                ? '↓'
+                                : '↕'}
                           </span>
                         </button>
                       ) : (
-                        flexRender(header.column.columnDef.header, header.getContext())
+                        flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )
                       )}
                     </th>
                   );
@@ -70,67 +88,74 @@ export function DataTable<TData>({
           </thead>
 
           <tbody className="fp-data-table__body">
-            {loading
-              ? Array.from({ length: loadingRowCount }, (_, rowIndex) => (
-                  <tr key={`loading-${rowIndex}`} className="fp-data-table__row" aria-hidden="true">
-                    {Array.from({ length: columnsCount }, (_, cellIndex) => (
-                      <td key={cellIndex} className="fp-data-table__cell">
-                        <span className="fp-data-table__skeleton" />
+            {loading ? (
+              Array.from({ length: loadingRowCount }, (_, rowIndex) => (
+                <tr
+                  key={`loading-${rowIndex}`}
+                  className="fp-data-table__row"
+                  aria-hidden="true"
+                >
+                  {Array.from({ length: columnsCount }, (_, cellIndex) => (
+                    <td key={cellIndex} className="fp-data-table__cell">
+                      <span className="fp-data-table__skeleton" />
+                    </td>
+                  ))}
+                </tr>
+              ))
+            ) : errorState ? (
+              <tr>
+                <td className="fp-data-table__state" colSpan={columnsCount}>
+                  {errorState}
+                </td>
+              </tr>
+            ) : rows.length === 0 ? (
+              <tr>
+                <td className="fp-data-table__state" colSpan={columnsCount}>
+                  {emptyState}
+                </td>
+              </tr>
+            ) : (
+              rows.map((row) => {
+                const clickable = Boolean(onRowClick);
+                const label = getRowLabel?.(row);
+
+                return (
+                  <tr
+                    key={row.id}
+                    className={cn(
+                      'fp-data-table__row',
+                      clickable && 'fp-data-table__row--interactive',
+                      row.getIsSelected() && 'fp-data-table__row--selected',
+                    )}
+                    tabIndex={clickable ? 0 : undefined}
+                    aria-label={clickable ? label : undefined}
+                    aria-selected={
+                      row.getCanSelect() ? row.getIsSelected() : undefined
+                    }
+                    onClick={clickable ? () => onRowClick?.(row) : undefined}
+                    onKeyDown={
+                      clickable
+                        ? (event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                              event.preventDefault();
+                              onRowClick?.(row);
+                            }
+                          }
+                        : undefined
+                    }
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <td key={cell.id} className="fp-data-table__cell">
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
                       </td>
                     ))}
                   </tr>
-                ))
-              : errorState
-                ? (
-                    <tr>
-                      <td className="fp-data-table__state" colSpan={columnsCount}>
-                        {errorState}
-                      </td>
-                    </tr>
-                  )
-                : rows.length === 0
-                  ? (
-                      <tr>
-                        <td className="fp-data-table__state" colSpan={columnsCount}>
-                          {emptyState}
-                        </td>
-                      </tr>
-                    )
-                  : rows.map((row) => {
-                      const clickable = Boolean(onRowClick);
-                      const label = getRowLabel?.(row);
-
-                      return (
-                        <tr
-                          key={row.id}
-                          className={cn(
-                            'fp-data-table__row',
-                            clickable && 'fp-data-table__row--interactive',
-                            row.getIsSelected() && 'fp-data-table__row--selected',
-                          )}
-                          tabIndex={clickable ? 0 : undefined}
-                          aria-label={clickable ? label : undefined}
-                          aria-selected={row.getCanSelect() ? row.getIsSelected() : undefined}
-                          onClick={clickable ? () => onRowClick?.(row) : undefined}
-                          onKeyDown={
-                            clickable
-                              ? (event) => {
-                                  if (event.key === 'Enter' || event.key === ' ') {
-                                    event.preventDefault();
-                                    onRowClick?.(row);
-                                  }
-                                }
-                              : undefined
-                          }
-                        >
-                          {row.getVisibleCells().map((cell) => (
-                            <td key={cell.id} className="fp-data-table__cell">
-                              {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                            </td>
-                          ))}
-                        </tr>
-                      );
-                    })}
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>

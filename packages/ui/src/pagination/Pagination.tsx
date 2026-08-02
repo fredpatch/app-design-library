@@ -25,10 +25,15 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLElement> {
 
 type PaginationItem = number | 'ellipsis-start' | 'ellipsis-end';
 
-function createItems(page: number, pageCount: number, siblingCount: number): PaginationItem[] {
+function createItems(
+  page: number,
+  pageCount: number,
+  siblingCount: number,
+): PaginationItem[] {
   if (pageCount <= 1) return [1];
   const visible = siblingCount * 2 + 5;
-  if (pageCount <= visible) return Array.from({ length: pageCount }, (_, index) => index + 1);
+  if (pageCount <= visible)
+    return Array.from({ length: pageCount }, (_, index) => index + 1);
 
   const start = Math.max(2, page - siblingCount);
   const end = Math.min(pageCount - 1, page + siblingCount);
@@ -65,7 +70,13 @@ export function Pagination({
   );
 
   const goTo = (target: number) => {
-    if (disabled || target === currentPage || target < 1 || target > safePageCount) return;
+    if (
+      disabled ||
+      target === currentPage ||
+      target < 1 ||
+      target > safePageCount
+    )
+      return;
     onPageChange(target);
   };
 
@@ -89,12 +100,28 @@ export function Pagination({
   );
 
   return (
-    <nav className={cn('fp-pagination', className)} aria-label={label} {...props}>
+    <nav
+      className={cn('fp-pagination', className)}
+      aria-label={label}
+      {...props}
+    >
       <div className="fp-pagination__list">
         {showFirstLast
-          ? control(<ChevronsLeft aria-hidden="true" />, 1, firstLabel, currentPage === 1, 'first')
+          ? control(
+              <ChevronsLeft aria-hidden="true" />,
+              1,
+              firstLabel,
+              currentPage === 1,
+              'first',
+            )
           : null}
-        {control(<ChevronLeft aria-hidden="true" />, currentPage - 1, previousLabel, currentPage === 1, 'previous')}
+        {control(
+          <ChevronLeft aria-hidden="true" />,
+          currentPage - 1,
+          previousLabel,
+          currentPage === 1,
+          'previous',
+        )}
 
         {items.map((item) =>
           typeof item === 'number' ? (
@@ -111,15 +138,31 @@ export function Pagination({
               {item}
             </button>
           ) : (
-            <span key={item} className="fp-pagination__ellipsis" aria-hidden="true">
+            <span
+              key={item}
+              className="fp-pagination__ellipsis"
+              aria-hidden="true"
+            >
               <MoreHorizontal />
             </span>
           ),
         )}
 
-        {control(<ChevronRight aria-hidden="true" />, currentPage + 1, nextLabel, currentPage === safePageCount, 'next')}
+        {control(
+          <ChevronRight aria-hidden="true" />,
+          currentPage + 1,
+          nextLabel,
+          currentPage === safePageCount,
+          'next',
+        )}
         {showFirstLast
-          ? control(<ChevronsRight aria-hidden="true" />, safePageCount, lastLabel, currentPage === safePageCount, 'last')
+          ? control(
+              <ChevronsRight aria-hidden="true" />,
+              safePageCount,
+              lastLabel,
+              currentPage === safePageCount,
+              'last',
+            )
           : null}
       </div>
     </nav>

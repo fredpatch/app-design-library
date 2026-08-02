@@ -21,10 +21,38 @@ type Dossier = {
 };
 
 const data: Dossier[] = [
-  { id: '1', postulant: 'Air Service Gabon', reference: 'OMA-2026-014', phase: 'Évaluation documentaire', status: 'En cours', updatedAt: '30/07/2026' },
-  { id: '2', postulant: 'Afrijet Business Service', reference: 'OMA-2026-009', phase: 'Demande formelle', status: 'À corriger', updatedAt: '28/07/2026' },
-  { id: '3', postulant: 'Gabon Aero Solutions', reference: 'OMA-2026-005', phase: 'Phase préliminaire', status: 'Validé', updatedAt: '24/07/2026' },
-  { id: '4', postulant: 'Equaflight Services', reference: 'OMA-2026-003', phase: 'Inspection et avis', status: 'En cours', updatedAt: '22/07/2026' },
+  {
+    id: '1',
+    postulant: 'Air Service Gabon',
+    reference: 'OMA-2026-014',
+    phase: 'Évaluation documentaire',
+    status: 'En cours',
+    updatedAt: '30/07/2026',
+  },
+  {
+    id: '2',
+    postulant: 'Afrijet Business Service',
+    reference: 'OMA-2026-009',
+    phase: 'Demande formelle',
+    status: 'À corriger',
+    updatedAt: '28/07/2026',
+  },
+  {
+    id: '3',
+    postulant: 'Gabon Aero Solutions',
+    reference: 'OMA-2026-005',
+    phase: 'Phase préliminaire',
+    status: 'Validé',
+    updatedAt: '24/07/2026',
+  },
+  {
+    id: '4',
+    postulant: 'Equaflight Services',
+    reference: 'OMA-2026-003',
+    phase: 'Inspection et avis',
+    status: 'En cours',
+    updatedAt: '22/07/2026',
+  },
 ];
 
 const columnHelper = createColumnHelper<Dossier>();
@@ -39,8 +67,17 @@ const columns = [
     header: 'Statut',
     cell: (info) => {
       const status = info.getValue();
-      const tone = status === 'Validé' ? 'success' : status === 'À corriger' ? 'warning' : 'info';
-      return <StatusBadge tone={tone} dot>{status}</StatusBadge>;
+      const tone =
+        status === 'Validé'
+          ? 'success'
+          : status === 'À corriger'
+            ? 'warning'
+            : 'info';
+      return (
+        <StatusBadge tone={tone} dot>
+          {status}
+        </StatusBadge>
+      );
     },
   }),
   columnHelper.accessor('updatedAt', { header: 'Dernière mise à jour' }),
@@ -79,7 +116,11 @@ function TableExample({
         table={table}
         loading={loading}
         loadingRowCount={4}
-        errorState={error ? 'Impossible de charger les dossiers. Veuillez réessayer.' : undefined}
+        errorState={
+          error
+            ? 'Impossible de charger les dossiers. Veuillez réessayer.'
+            : undefined
+        }
         emptyState="Aucun dossier ne correspond aux critères sélectionnés."
         density={density}
         stickyHeader={stickyHeader}
@@ -107,7 +148,17 @@ export const ErrorState: Story = { render: () => <TableExample error /> };
 export const StickyHeader: Story = {
   render: () => (
     <div style={{ height: 250, overflow: 'auto' }}>
-      <TableExample rows={[...data, ...data.map((item, index) => ({ ...item, id: `${item.id}-${index}`, reference: `${item.reference}-${index + 1}` }))]} stickyHeader />
+      <TableExample
+        rows={[
+          ...data,
+          ...data.map((item, index) => ({
+            ...item,
+            id: `${item.id}-${index}`,
+            reference: `${item.reference}-${index + 1}`,
+          })),
+        ]}
+        stickyHeader
+      />
     </div>
   ),
 };
@@ -117,7 +168,9 @@ export const DensityComparison: Story = {
     <div style={{ display: 'grid', gap: 24 }}>
       {(['comfortable', 'compact', 'dense'] as const).map((density) => (
         <section key={density}>
-          <strong style={{ display: 'block', marginBottom: 8 }}>{density}</strong>
+          <strong style={{ display: 'block', marginBottom: 8 }}>
+            {density}
+          </strong>
           <TableExample density={density} />
         </section>
       ))}
@@ -132,7 +185,11 @@ export const ThemeComparison: Story = {
         <section
           key={theme}
           data-theme={theme}
-          style={{ padding: 16, background: 'var(--surface-page)', color: 'var(--text-primary)' }}
+          style={{
+            padding: 16,
+            background: 'var(--surface-page)',
+            color: 'var(--text-primary)',
+          }}
         >
           <strong style={{ display: 'block', marginBottom: 8 }}>{theme}</strong>
           <TableExample rows={data.slice(0, 3)} />

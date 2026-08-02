@@ -34,7 +34,9 @@ export function StatusBadge({
 }: StatusBadgeProps) {
   return (
     <span className={cn(statusBadgeVariants({ tone, size }), className)}>
-      {dot ? <span className="fp-status-badge__dot" aria-hidden="true" /> : null}
+      {dot ? (
+        <span className="fp-status-badge__dot" aria-hidden="true" />
+      ) : null}
       {icon ? (
         <span className="fp-status-badge__icon" aria-hidden="true">
           {icon}

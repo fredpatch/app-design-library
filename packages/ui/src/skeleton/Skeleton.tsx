@@ -10,11 +10,27 @@ export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
-  ({ className, width, height, radius = 'md', animated = true, style, ...props }, ref) => (
+  (
+    {
+      className,
+      width,
+      height,
+      radius = 'md',
+      animated = true,
+      style,
+      ...props
+    },
+    ref,
+  ) => (
     <div
       ref={ref}
       aria-hidden="true"
-      className={cn('fp-skeleton', `fp-skeleton--${radius}`, animated && 'fp-skeleton--animated', className)}
+      className={cn(
+        'fp-skeleton',
+        `fp-skeleton--${radius}`,
+        animated && 'fp-skeleton--animated',
+        className,
+      )}
       style={{ width, height, ...style }}
       {...props}
     />

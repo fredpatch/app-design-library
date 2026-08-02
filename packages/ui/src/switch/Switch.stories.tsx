@@ -15,7 +15,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     label: 'Notifications par e-mail',
-    description: 'Recevoir un résumé lorsqu’une action importante est enregistrée.',
+    description:
+      'Recevoir un résumé lorsqu’une action importante est enregistrée.',
   },
 };
 
@@ -34,7 +35,9 @@ export const Controlled: Story = {
       <Switch
         checked={checked}
         onCheckedChange={setChecked}
-        label={checked ? 'Accès au portail activé' : 'Accès au portail désactivé'}
+        label={
+          checked ? 'Accès au portail activé' : 'Accès au portail désactivé'
+        }
         description="L’état est contrôlé par le composant parent."
       />
     );
@@ -44,7 +47,11 @@ export const Controlled: Story = {
 export const Disabled: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: 16 }}>
-      <Switch disabled label="Option indisponible" description="Cette préférence est verrouillée par l’administrateur." />
+      <Switch
+        disabled
+        label="Option indisponible"
+        description="Cette préférence est verrouillée par l’administrateur."
+      />
       <Switch disabled defaultChecked label="Configuration imposée" />
     </div>
   ),
@@ -60,8 +67,10 @@ export const Invalid: Story = {
 
 export const LongFrenchContent: Story = {
   args: {
-    label: 'Autoriser l’envoi automatique des rappels avant expiration de l’abonnement du client',
-    description: 'Les rappels sont envoyés selon les délais configurés par l’établissement et peuvent être désactivés pour chaque client.',
+    label:
+      'Autoriser l’envoi automatique des rappels avant expiration de l’abonnement du client',
+    description:
+      'Les rappels sont envoyés selon les délais configurés par l’établissement et peuvent être désactivés pour chaque client.',
   },
 };
 
@@ -69,8 +78,20 @@ export const ThemeComparison: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: 20, width: 420 }}>
       {(['neutral', 'prestix', 'anac-institutional'] as const).map((theme) => (
-        <section key={theme} data-theme={theme} style={{ padding: 16, background: 'var(--surface-page)', color: 'var(--text-primary)' }}>
-          <Switch defaultChecked label={theme} description="Vérification du contraste et des états actifs." />
+        <section
+          key={theme}
+          data-theme={theme}
+          style={{
+            padding: 16,
+            background: 'var(--surface-page)',
+            color: 'var(--text-primary)',
+          }}
+        >
+          <Switch
+            defaultChecked
+            label={theme}
+            description="Vérification du contraste et des états actifs."
+          />
         </section>
       ))}
     </div>
@@ -82,7 +103,11 @@ export const DensityComparison: Story = {
     <div style={{ display: 'grid', gap: 20, width: 420 }}>
       {(['comfortable', 'compact', 'dense'] as const).map((density) => (
         <section key={density} data-density={density}>
-          <Switch defaultChecked label={density} description="Comparaison de la densité d’affichage." />
+          <Switch
+            defaultChecked
+            label={density}
+            description="Comparaison de la densité d’affichage."
+          />
         </section>
       ))}
     </div>

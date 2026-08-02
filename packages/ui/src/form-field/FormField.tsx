@@ -24,9 +24,10 @@ export function FormField({
   const controlId = childProps.id ?? `fp-field-${generatedId}`;
   const descriptionId = description ? `${controlId}-description` : undefined;
   const errorId = error ? `${controlId}-error` : undefined;
-  const describedBy = [childProps['aria-describedby'], descriptionId, errorId]
-    .filter(Boolean)
-    .join(' ') || undefined;
+  const describedBy =
+    [childProps['aria-describedby'], descriptionId, errorId]
+      .filter(Boolean)
+      .join(' ') || undefined;
 
   const control = React.cloneElement(children, {
     id: controlId,

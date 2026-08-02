@@ -8,7 +8,10 @@ export interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(
-  ({ className, orientation = 'horizontal', decorative = true, ...props }, ref) => (
+  (
+    { className, orientation = 'horizontal', decorative = true, ...props },
+    ref,
+  ) => (
     <div
       ref={ref}
       className={cn('fp-separator', `fp-separator--${orientation}`, className)}

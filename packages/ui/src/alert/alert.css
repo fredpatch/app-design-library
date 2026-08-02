@@ -62,20 +62,49 @@
   cursor: pointer;
 }
 
-.fp-alert__dismiss:hover { background: color-mix(in srgb, currentColor 9%, transparent); }
-.fp-alert__dismiss:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
+.fp-alert__dismiss:hover {
+  background: color-mix(in srgb, currentColor 9%, transparent);
+}
+.fp-alert__dismiss:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
 
-.fp-alert--info { border-color: var(--status-info-border); background: var(--status-info-bg); }
-.fp-alert--success { border-color: var(--status-success-border); background: var(--status-success-bg); }
-.fp-alert--warning { border-color: var(--status-warning-border); background: var(--status-warning-bg); }
-.fp-alert--danger { border-color: var(--status-danger-border); background: var(--status-danger-bg); }
+.fp-alert--info {
+  border-color: var(--status-info-border);
+  background: var(--status-info-bg);
+}
+.fp-alert--success {
+  border-color: var(--status-success-border);
+  background: var(--status-success-bg);
+}
+.fp-alert--warning {
+  border-color: var(--status-warning-border);
+  background: var(--status-warning-bg);
+}
+.fp-alert--danger {
+  border-color: var(--status-danger-border);
+  background: var(--status-danger-bg);
+}
 
-.fp-alert--info .fp-alert__icon { color: var(--status-info-text); }
-.fp-alert--success .fp-alert__icon { color: var(--status-success-text); }
-.fp-alert--warning .fp-alert__icon { color: var(--status-warning-text); }
-.fp-alert--danger .fp-alert__icon { color: var(--status-danger-text); }
+.fp-alert--info .fp-alert__icon {
+  color: var(--status-info-text);
+}
+.fp-alert--success .fp-alert__icon {
+  color: var(--status-success-text);
+}
+.fp-alert--warning .fp-alert__icon {
+  color: var(--status-warning-text);
+}
+.fp-alert--danger .fp-alert__icon {
+  color: var(--status-danger-text);
+}
 
 @media (max-width: 36rem) {
-  .fp-alert { gap: var(--layout-gap-sm); }
-  .fp-alert__actions > * { flex: 1 1 auto; }
+  .fp-alert {
+    gap: var(--layout-gap-sm);
+  }
+  .fp-alert__actions > * {
+    flex: 1 1 auto;
+  }
 }

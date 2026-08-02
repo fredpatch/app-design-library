@@ -71,13 +71,18 @@
   color: var(--status-danger-text);
 }
 
-.fp-form-field[data-invalid='true'] .fp-form-field__control > :is(input, textarea, select) {
+.fp-form-field[data-invalid='true']
+  .fp-form-field__control
+  > :is(input, textarea, select) {
   border-color: var(--status-danger-border);
 }
 
-.fp-form-field[data-invalid='true'] .fp-form-field__control > :is(input, textarea, select):focus-visible {
+.fp-form-field[data-invalid='true']
+  .fp-form-field__control
+  > :is(input, textarea, select):focus-visible {
   border-color: var(--status-danger-text);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--status-danger-text) 20%, transparent);
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--status-danger-text) 20%, transparent);
 }
 
 .fp-form-field[data-disabled='true'] {

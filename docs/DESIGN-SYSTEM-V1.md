@@ -102,7 +102,7 @@ Every interactive component must provide:
 The library supports three density modes:
 
 ```ts
-type Density = "comfortable" | "compact" | "dense";
+type Density = 'comfortable' | 'compact' | 'dense';
 ```
 
 Recommended consumers:
@@ -311,11 +311,11 @@ Example:
 
 ```ts
 const invoiceTone = {
-  draft: "neutral",
-  sent: "info",
-  paid: "success",
-  overdue: "warning",
-  cancelled: "danger",
+  draft: 'neutral',
+  sent: 'info',
+  paid: 'success',
+  overdue: 'warning',
+  cancelled: 'danger',
 } as const;
 ```
 
@@ -383,17 +383,17 @@ Density is activated through a data attribute:
 Example:
 
 ```css
-[data-density="comfortable"] {
+[data-density='comfortable'] {
   --control-height-md: 2.75rem;
   --table-row-height: 3.25rem;
 }
 
-[data-density="compact"] {
+[data-density='compact'] {
   --control-height-md: 2.375rem;
   --table-row-height: 2.75rem;
 }
 
-[data-density="dense"] {
+[data-density='dense'] {
   --control-height-md: 2rem;
   --table-row-height: 2.375rem;
 }
@@ -451,7 +451,7 @@ Themes must not redefine component selectors.
 Correct:
 
 ```css
-[data-theme="prestix"] {
+[data-theme='prestix'] {
   --interactive-primary: #a77800;
   --surface-page: #ffffff;
 }
@@ -460,7 +460,7 @@ Correct:
 Incorrect:
 
 ```css
-[data-theme="prestix"] .button {
+[data-theme='prestix'] .button {
   background: #a77800;
 }
 ```
@@ -523,14 +523,9 @@ Trigger an application action.
 
 ```ts
 type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "outline"
-  | "ghost"
-  | "destructive"
-  | "link";
+  'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'link';
 
-type ButtonSize = "sm" | "md" | "lg" | "icon";
+type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
 ```
 
 Required capabilities:
@@ -581,7 +576,7 @@ Display a compact semantic state.
 ### API
 
 ```ts
-type StatusTone = "neutral" | "info" | "success" | "warning" | "danger";
+type StatusTone = 'neutral' | 'info' | 'success' | 'warning' | 'danger';
 ```
 
 ```ts
@@ -590,7 +585,7 @@ interface StatusBadgeProps {
   children: React.ReactNode;
   icon?: React.ReactNode;
   dot?: boolean;
-  size?: "sm" | "md";
+  size?: 'sm' | 'md';
 }
 ```
 
@@ -638,7 +633,7 @@ Example:
   error={errors.email?.message}
   required
 >
-  <Input {...register("email")} />
+  <Input {...register('email')} />
 </FormField>
 ```
 
@@ -677,7 +672,7 @@ interface DataTableProps<TData> {
   onRowClick?: (row: Row<TData>) => void;
   getRowLabel?: (row: Row<TData>) => string;
   stickyHeader?: boolean;
-  density?: "inherit" | Density;
+  density?: 'inherit' | Density;
 }
 ```
 

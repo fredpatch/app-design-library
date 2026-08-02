@@ -46,7 +46,9 @@ export const Disabled: Story = {
 
 export const Controlled: Story = {
   render: () => {
-    const [checked, setChecked] = React.useState<boolean | 'indeterminate'>(false);
+    const [checked, setChecked] = React.useState<boolean | 'indeterminate'>(
+      false,
+    );
     return (
       <Checkbox
         checked={checked}
@@ -62,8 +64,16 @@ export const ThemeComparison: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: 20 }}>
       {(['neutral', 'prestix', 'anac-institutional'] as const).map((theme) => (
-        <div key={theme} data-theme={theme} style={{ padding: 20, background: 'var(--surface-page)' }}>
-          <Checkbox defaultChecked label={`Notifications — ${theme}`} description="Validation visuelle du thème." />
+        <div
+          key={theme}
+          data-theme={theme}
+          style={{ padding: 20, background: 'var(--surface-page)' }}
+        >
+          <Checkbox
+            defaultChecked
+            label={`Notifications — ${theme}`}
+            description="Validation visuelle du thème."
+          />
         </div>
       ))}
     </div>

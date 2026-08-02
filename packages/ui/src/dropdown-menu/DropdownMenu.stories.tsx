@@ -13,7 +13,12 @@ import {
   DropdownMenuTrigger,
 } from './DropdownMenu';
 
-const meta = { title: 'UI/DropdownMenu', component: DropdownMenu, tags: ['autodocs'], parameters: { layout: 'centered' } } satisfies Meta<typeof DropdownMenu>;
+const meta = {
+  title: 'UI/DropdownMenu',
+  component: DropdownMenu,
+  tags: ['autodocs'],
+  parameters: { layout: 'centered' },
+} satisfies Meta<typeof DropdownMenu>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
@@ -21,12 +26,23 @@ function Example() {
   const [archived, setArchived] = React.useState(false);
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild><Button variant="outline" size="icon" aria-label="Ouvrir le menu"><MoreHorizontal /></Button></DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" aria-label="Ouvrir le menu">
+          <MoreHorizontal />
+        </Button>
+      </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>Actions du dossier</DropdownMenuLabel>
-        <DropdownMenuItem>Ouvrir<DropdownMenuShortcut>Entrée</DropdownMenuShortcut></DropdownMenuItem>
+        <DropdownMenuItem>
+          Ouvrir<DropdownMenuShortcut>Entrée</DropdownMenuShortcut>
+        </DropdownMenuItem>
         <DropdownMenuItem>Dupliquer</DropdownMenuItem>
-        <DropdownMenuCheckboxItem checked={archived} onCheckedChange={(value) => setArchived(value === true)}>Afficher les éléments archivés</DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={archived}
+          onCheckedChange={(value) => setArchived(value === true)}
+        >
+          Afficher les éléments archivés
+        </DropdownMenuCheckboxItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem destructive>Supprimer</DropdownMenuItem>
       </DropdownMenuContent>
@@ -35,4 +51,18 @@ function Example() {
 }
 
 export const Default: Story = { render: () => <Example /> };
-export const ThemeComparison: Story = { render: () => <div style={{ display: 'flex', gap: 24 }}>{['neutral','prestix','anac-institutional'].map((theme) => <div key={theme} data-theme={theme} style={{ padding: 24, background: 'var(--surface-page)' }}><Example /></div>)}</div> };
+export const ThemeComparison: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 24 }}>
+      {['neutral', 'prestix', 'anac-institutional'].map((theme) => (
+        <div
+          key={theme}
+          data-theme={theme}
+          style={{ padding: 24, background: 'var(--surface-page)' }}
+        >
+          <Example />
+        </div>
+      ))}
+    </div>
+  ),
+};
