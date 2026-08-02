@@ -20,6 +20,10 @@
   min-width: min(100%, 16rem);
 }
 
+.fp-filter-bar__search > * {
+  width: 100%;
+}
+
 .fp-filter-bar__controls,
 .fp-filter-bar__actions,
 .fp-filter-bar__filters {
@@ -39,8 +43,14 @@
   font-size: var(--text-xs);
 }
 
-.fp-filter-bar input,
-.fp-filter-bar select {
+/* Legacy support for intentionally raw controls only.
+   Direct-child selectors prevent these rules from leaking into polished
+   components such as Input, Select, and DatePicker. */
+.fp-filter-bar__search > input,
+.fp-filter-bar__controls > input,
+.fp-filter-bar__controls > select,
+.fp-filter-bar__filters > input,
+.fp-filter-bar__filters > select {
   min-height: var(--control-height-md);
   padding-inline: var(--control-padding-x);
   border: 1px solid var(--border-default);
@@ -50,8 +60,11 @@
   font: inherit;
 }
 
-.fp-filter-bar input:focus-visible,
-.fp-filter-bar select:focus-visible {
+.fp-filter-bar__search > input:focus-visible,
+.fp-filter-bar__controls > input:focus-visible,
+.fp-filter-bar__controls > select:focus-visible,
+.fp-filter-bar__filters > input:focus-visible,
+.fp-filter-bar__filters > select:focus-visible {
   outline: 2px solid var(--border-focus);
   outline-offset: 1px;
 }
