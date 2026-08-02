@@ -48,7 +48,7 @@
 .fp-pagination__button[data-active='true'] {
   border-color: var(--interactive-primary);
   background: var(--interactive-primary);
-  color: var(--text-on-primary);
+  color: var(--interactive-primary-foreground);
   font-weight: var(--font-weight-semibold);
   box-shadow: 0 1px 2px rgb(15 23 42 / 0.12);
 }
