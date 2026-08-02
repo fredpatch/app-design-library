@@ -1,27 +1,29 @@
 .fp-filter-bar {
   display: grid;
-  gap: var(--layout-gap-md);
-  padding: var(--layout-gap-md);
+  gap: var(--layout-gap-lg);
+  padding: var(--layout-gap-lg);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   background: var(--surface-card);
 }
 
 .fp-filter-bar__primary {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(18rem, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: var(--layout-gap-md);
-  flex-wrap: wrap;
 }
 
 .fp-filter-bar__search {
-  flex: 1 1 18rem;
-  min-width: min(100%, 16rem);
+  min-width: 0;
 }
 
 .fp-filter-bar__search > * {
   width: 100%;
+}
+
+.fp-filter-bar__search .fp-input-shell {
+  min-height: var(--control-height-lg);
 }
 
 .fp-filter-bar__controls,
@@ -33,8 +35,19 @@
   flex-wrap: wrap;
 }
 
+.fp-filter-bar__controls,
+.fp-filter-bar__actions {
+  flex: 0 0 auto;
+}
+
+.fp-filter-bar__actions > button,
+.fp-filter-bar__controls > button {
+  min-height: var(--control-height-lg);
+  white-space: nowrap;
+}
+
 .fp-filter-bar__filters {
-  padding-top: var(--layout-gap-sm);
+  padding-top: var(--layout-gap-md);
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -60,6 +73,10 @@
   font: inherit;
 }
 
+.fp-filter-bar__search > input {
+  min-height: var(--control-height-lg);
+}
+
 .fp-filter-bar__search > input:focus-visible,
 .fp-filter-bar__controls > input:focus-visible,
 .fp-filter-bar__controls > select:focus-visible,
@@ -69,11 +86,9 @@
   outline-offset: 1px;
 }
 
-@media (max-width: 42rem) {
-  .fp-filter-bar__primary,
-  .fp-filter-bar__controls,
-  .fp-filter-bar__actions,
-  .fp-filter-bar__filters {
+@media (max-width: 48rem) {
+  .fp-filter-bar__primary {
+    grid-template-columns: minmax(0, 1fr);
     align-items: stretch;
   }
 
@@ -81,11 +96,19 @@
   .fp-filter-bar__actions,
   .fp-filter-bar__filters {
     width: 100%;
+    align-items: stretch;
   }
 
   .fp-filter-bar__controls > *,
   .fp-filter-bar__actions > *,
   .fp-filter-bar__filters > * {
     flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 32rem) {
+  .fp-filter-bar {
+    gap: var(--layout-gap-md);
+    padding: var(--layout-gap-md);
   }
 }
