@@ -14,3 +14,7 @@ export { Select } from './select/Select';
 export type { SelectOption, SelectProps } from './select/Select';
 export { DatePicker } from './date-picker/DatePicker';
 export type { DatePickerProps } from './date-picker/DatePicker';
+export { Input } from './input/Input';
+export type { InputProps } from './input/Input';
+export { Textarea } from './textarea/Textarea';
+export type { TextareaProps } from './textarea/Textarea';
