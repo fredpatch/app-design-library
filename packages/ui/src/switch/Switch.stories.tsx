@@ -12,6 +12,19 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+function ControlledSwitchStory() {
+  const [checked, setChecked] = React.useState(true);
+
+  return (
+    <Switch
+      checked={checked}
+      onCheckedChange={setChecked}
+      label={checked ? 'Accès au portail activé' : 'Accès au portail désactivé'}
+      description="L’état est contrôlé par le composant parent."
+    />
+  );
+}
+
 export const Default: Story = {
   args: {
     label: 'Notifications par e-mail',
@@ -28,17 +41,7 @@ export const Checked: Story = {
 };
 
 export const Controlled: Story = {
-  render: () => {
-    const [checked, setChecked] = React.useState(true);
-    return (
-      <Switch
-        checked={checked}
-        onCheckedChange={setChecked}
-        label={checked ? 'Accès au portail activé' : 'Accès au portail désactivé'}
-        description="L’état est contrôlé par le composant parent."
-      />
-    );
-  },
+  render: () => <ControlledSwitchStory />,
 };
 
 export const Disabled: Story = {
