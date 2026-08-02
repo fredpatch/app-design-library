@@ -12,6 +12,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+function ControlledCheckboxStory() {
+  const [checked, setChecked] = React.useState<boolean | 'indeterminate'>(
+    false,
+  );
+
+  return (
+    <Checkbox
+      checked={checked}
+      onCheckedChange={setChecked}
+      label="Activer le suivi hebdomadaire"
+      description={`État actuel : ${checked === true ? 'activé' : checked === 'indeterminate' ? 'partiel' : 'désactivé'}`}
+    />
+  );
+}
+
 export const Default: Story = {
   args: { label: 'Recevoir les notifications par e-mail' },
 };
@@ -58,6 +73,7 @@ export const Controlled: Story = {
       />
     );
   },
+  render: () => <ControlledCheckboxStory />,
 };
 
 export const ThemeComparison: Story = {
